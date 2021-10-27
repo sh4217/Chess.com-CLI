@@ -1,7 +1,6 @@
 import pyautogui
 import webbrowser
 import time
-import os
 
 acceptableMoves = [
     'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8',
@@ -14,10 +13,14 @@ acceptableMoves = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8',
     ]
 
+# Coordinates of the bottom left and the top right of the chess board
+# on my computer. Note that the x coordinate increases while moving right,
+# but the y coordinate increases while moving left.
 boardBottomLeft = [490, 1108]
 boardTopRight = [1393, 202]
 boardDimensions = [boardTopRight[0] - boardBottomLeft[0], boardTopRight[1] - boardBottomLeft[1]]
 
+# x coordinate of any square starting with the specified letter
 letterCoordinate = {
     'a': boardBottomLeft[0] + 1 * boardDimensions[0]/16,
     'b': boardBottomLeft[0] + 3 * boardDimensions[0]/16,
@@ -29,6 +32,7 @@ letterCoordinate = {
     'h': boardBottomLeft[0] + 15 * boardDimensions[0]/16,
     }
 
+# y coordinate of any square ending with the specified number
 rowCoordinate = {
     '1': boardBottomLeft[1] + 1 * boardDimensions[1]/16,
     '2': boardBottomLeft[1] + 3 * boardDimensions[1]/16,
@@ -40,6 +44,7 @@ rowCoordinate = {
     '8': boardBottomLeft[1] + 15 * boardDimensions[1]/16,
 }
 
+# full coordinates of every square on the board
 squareCoordinates = {
     'a1': [letterCoordinate['a'], rowCoordinate['1']],
     'a2': [letterCoordinate['a'], rowCoordinate['2']],
@@ -141,7 +146,7 @@ while continueFlag:
 
     # Re-opens Terminal to enter move.
     pyautogui.hotkey("command", "space")
-    pyautogui.typewrite("t")
+    pyautogui.typewrite("terminal")
     pyautogui.press("enter")
 
     # Move entry
